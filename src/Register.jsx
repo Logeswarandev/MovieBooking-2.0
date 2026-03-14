@@ -15,7 +15,7 @@ function Register() {
     try{
 
       const res = await axios.post(
-        "https://moviebooking-2-0-1.onrender.com/register",  // ✅ updated
+        "https://moviebooking-2-0-rmmn.onrender.com/register",
         {
           name,
           email,
@@ -25,9 +25,8 @@ function Register() {
 
       alert(res.data.message);
 
-      // Auto login
       const loginRes = await axios.post(
-        "https://moviebooking-2-0-1.onrender.com/login",  // ✅ updated
+        "https://moviebooking-2-0-rmmn.onrender.com/login",
         {
           email,
           password

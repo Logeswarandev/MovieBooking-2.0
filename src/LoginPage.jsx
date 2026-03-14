@@ -14,7 +14,7 @@ function LoginPage(){
     try{
 
       const res = await axios.post(
-        "https://moviebooking-2-0-1.onrender.com/login",  // ✅ updated
+        "https://moviebooking-2-0-rmmn.onrender.com/login",
         {
           email,
           password

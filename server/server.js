@@ -9,10 +9,10 @@ const User = require("./models/User");
 
 const app = express();
 
-// ✅ Fixed CORS
+// ✅ Updated CORS
 app.use(cors({
   origin: [
-    "https://loges2004.github.io",  // your GitHub Pages URL
+    "https://logeswarandev.github.io",
     "http://localhost:3000"
   ],
   credentials: true
@@ -72,7 +72,6 @@ app.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Incorrect password" });
     }
 
-    // ✅ Fixed JWT Secret
     const token = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET,
