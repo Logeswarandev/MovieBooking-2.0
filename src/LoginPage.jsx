@@ -13,17 +13,20 @@ function LoginPage(){
 
     try{
 
-      const res = await axios.post("https://moviebooking-2-0.onrender.com",{
-        email,
-        password
-      });
+      const res = await axios.post(
+        "https://moviebooking-2-0-1.onrender.com/login",  // ✅ updated
+        {
+          email,
+          password
+        }
+      );
 
       localStorage.setItem("token",res.data.token);
       localStorage.setItem("user",JSON.stringify(res.data.user));
 
       alert("Login Successful");
 
-      window.location.href="/";
+      window.location.href="/MovieBooking-2.0/#/";
 
     }catch(err){
 
@@ -47,6 +50,7 @@ function LoginPage(){
             type="email"
             placeholder="Enter email"
             className="auth-input"
+            value={email}
             onChange={(e)=>setEmail(e.target.value)}
             required
           />
@@ -55,11 +59,14 @@ function LoginPage(){
             type="password"
             placeholder="Enter password"
             className="auth-input"
+            value={password}
             onChange={(e)=>setPassword(e.target.value)}
             required
           />
 
-          <button className="auth-btn">Sign In</button>
+          <button type="submit" className="auth-btn">
+            Sign In
+          </button>
 
           <p className="auth-link">
             Don't have an account? <Link to="/register">Register</Link>
@@ -70,6 +77,7 @@ function LoginPage(){
       </div>
 
     </div>
+
   );
 
 }

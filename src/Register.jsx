@@ -14,24 +14,30 @@ function Register() {
 
     try{
 
-      const res = await axios.post("https://moviebooking-2-0.onrender.com",{
-        name,
-        email,
-        password
-      });
+      const res = await axios.post(
+        "https://moviebooking-2-0-1.onrender.com/register",  // ✅ updated
+        {
+          name,
+          email,
+          password
+        }
+      );
 
       alert(res.data.message);
 
-      // automatically login after register
-      const loginRes = await axios.post("https://moviebooking-2-0.onrender.com",{
-        email,
-        password
-      });
+      // Auto login
+      const loginRes = await axios.post(
+        "https://moviebooking-2-0-1.onrender.com/login",  // ✅ updated
+        {
+          email,
+          password
+        }
+      );
 
       localStorage.setItem("token",loginRes.data.token);
       localStorage.setItem("user",JSON.stringify(loginRes.data.user));
 
-      window.location.href="/";
+      window.location.href="/MovieBooking-2.0/#/";
 
     }catch(err){
 
@@ -55,6 +61,7 @@ function Register() {
             type="text"
             placeholder="Enter username"
             className="auth-input"
+            value={name}
             onChange={(e)=>setName(e.target.value)}
             required
           />
@@ -63,6 +70,7 @@ function Register() {
             type="email"
             placeholder="Enter email"
             className="auth-input"
+            value={email}
             onChange={(e)=>setEmail(e.target.value)}
             required
           />
@@ -71,11 +79,14 @@ function Register() {
             type="password"
             placeholder="Enter password"
             className="auth-input"
+            value={password}
             onChange={(e)=>setPassword(e.target.value)}
             required
           />
 
-          <button className="auth-btn">Register</button>
+          <button type="submit" className="auth-btn">
+            Register
+          </button>
 
           <p className="auth-link">
             Already have an account? <Link to="/login">Login</Link>
@@ -86,6 +97,7 @@ function Register() {
       </div>
 
     </div>
+
   );
 
 }
